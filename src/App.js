@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BroswerRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import DogList from './DogList';
-import whiskey from '../pics/whiskey.jpg';
-import hazel from '../pics/hazel.jpg';
-import tubby from '../pics/tubby.jpg';
+import whiskey  from './whiskey.jpg';
+import hazel from './hazel.jpg';
+import tubby from './tubby.jpg';
 import Nav from './Nav';
-
-
-
-
 class App extends Component {
   static defaultProps = {
     dogs: [
@@ -48,7 +44,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+        <BrowserRouter>
+          <Nav dogs={this.props} />
+          <Switch>
+            <Route path="/dogs/:name" 
+                   render={ rtProps => < DogList {...rtProps } /> } />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
