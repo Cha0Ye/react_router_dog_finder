@@ -1,0 +1,22 @@
+.dog-nav {
+    background-color: rgb(6, 6, 63);
+    text-align: center;
+    font-weight: bold;
+    }
+    
+    .dog-nav a {
+    padding: 0.5em 0;
+    width: 10em;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    }
+    
+    .dog-nav a:hover {
+    background-color: rgb(22, 241, 51);
+    }
+    
+    a.active {
+        font-weight: bold;
+        color: pink
+    }

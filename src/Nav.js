@@ -4,16 +4,15 @@ import { NavLink } from "react-router-dom";
 class Nav extends Component {
     
     render() {
-        console.log('dog props are', this.props);
         
-        const someDog = this.props.dogs.dogs.map( dg => { 
+        const someDog = this.props.dogs.map( dg => { 
             return <NavLink key={dg.name}
-                            exact to={`/dogs/:${dg.name}`}>
+                            exact to={`/dogs/${dg.name}`}>
                     {dg.name}        
                     </NavLink>
         });
         return (
-            <nav>
+            <nav className="dog-nav">
                {someDog}
             </nav>                
           

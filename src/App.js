@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import DogList from './DogList';
-import whiskey  from './whiskey.jpg';
+import Dog from './Dog';
+import whiskey from './whiskey.jpg';
 import hazel from './hazel.jpg';
 import tubby from './tubby.jpg';
 import Nav from './Nav';
+
 class App extends Component {
   static defaultProps = {
     dogs: [
@@ -41,14 +43,18 @@ class App extends Component {
       }
     ]
   }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Nav dogs={this.props} />
+          <Nav dogs={this.props.dogs} />
           <Switch>
             <Route path="/dogs/:name" 
-                   render={ rtProps => < DogList {...rtProps } /> } />
+                   render={ rtProps => <Dog {...rtProps } />} />
+            <Route exact path="/dogs"
+                   render={ () => <DogList dogs={this.props.dogs} />} />
+            <Redirect to="/dogs" />
           </Switch>
         </BrowserRouter>
       </div>
