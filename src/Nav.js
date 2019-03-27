@@ -13,6 +13,7 @@ class Nav extends Component {
         });
         return (
             <nav className="dog-nav">
+                <p><NavLink exact to="/dogs">HOME</NavLink></p>
                {someDog}
             </nav>                
           

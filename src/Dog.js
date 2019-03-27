@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Dog extends Component {
-    render() {
-       const { name, src } = this.props;
+    render() {       
+
+       let dog = this.props.dogs.find( (dg) => {
+           return dg.name === this.props.match.params.name
+       });
+
+       let facts = dog.facts.map(f => <li>{f}</li> );
+      
         return (
             <div>
-                <img src={src} alt={name} width="150px" height="150px"/>
-                <Link exact to={`/dogs/${name}`}>{name}</Link>
+                <h2>{dog.name}</h2>
+                <img src={dog.src} alt={dog.name} width="150px" height="150px"/>
+                <ul>
+                    {facts}
+                </ul>
+                <Link exact to={`/dogs/`}>back</Link>
             </div>
         );
     }

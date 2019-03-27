@@ -51,7 +51,7 @@ class App extends Component {
           <Nav dogs={this.props.dogs} />
           <Switch>
             <Route path="/dogs/:name" 
-                   render={ rtProps => <Dog {...rtProps } />} />
+                   render={ rtProps => <Dog dogs={this.props.dogs}{...rtProps } />} />
             <Route exact path="/dogs"
                    render={ () => <DogList dogs={this.props.dogs} />} />
             <Redirect to="/dogs" />
