@@ -18,7 +18,7 @@ class Dog extends Component {
                 <ul>
                     {facts}
                 </ul>
-                <Link exact to={`/dogs/`}>back</Link>
+                <Link exact="true" to={`/dogs/`}>back</Link>
             </div>
         );
     }
