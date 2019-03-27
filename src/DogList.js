@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Dog from './Dog';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid/v4';
 
 class DogList extends Component {
     render() {
-        const showDogs = this.props.dogs.map( dg => {
+        const showDogs = this.props.dogs.map(dg => {
+            // Map over props to create a small intro for each dog, including link
+            // to dog's page.
             return (
-                    <div>
-                        
-                        <img src={dg.src} alt={dg.name} width="150px" height="150px"/>
-                        <Link to={`/dogs/${dg.name}`}>{dg.name}</Link>
-                    </div>
-                    )
-        
+                <div key={uuid()} className="dog-list">
+                    <img src={dg.src} alt={dg.name} width="150px" height="150px"/>
+                    <Link to={`/dogs/${dg.name}`}>{dg.name}</Link>
+                </div>
+            );
         });
         return (
             <div>
@@ -24,5 +24,3 @@ class DogList extends Component {
 }
 
 export default DogList;
-
-//<Dog key={dg.name} src={dg.src} name={dg.name}

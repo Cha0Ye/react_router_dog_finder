@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid/v4';
 
 class Dog extends Component {
     render() {       
@@ -8,7 +9,7 @@ class Dog extends Component {
            return dg.name === this.props.match.params.name
        });
 
-       let facts = dog.facts.map(f => <li>{f}</li> );
+       let facts = dog.facts.map(f => <li key={uuid()}>{f}</li> );
       
         return (
             <div>

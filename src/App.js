@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import DogList from './DogList';
+import Nav from './Nav';
 import Dog from './Dog';
+import DogList from './DogList';
 import whiskey from './whiskey.jpg';
 import hazel from './hazel.jpg';
 import tubby from './tubby.jpg';
-import Nav from './Nav';
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends Component {
+  // Set up properties for potential dogs. Site is designed to be able to handle
+  // a changing list of dogs in props.
   static defaultProps = {
     dogs: [
       {
@@ -44,6 +47,7 @@ class App extends Component {
     ]
   }
 
+  // Main render returns basic web page of routes with nav bar at the top.
   render() {
     return (
       <div className="App">
@@ -51,9 +55,9 @@ class App extends Component {
           <Nav dogs={this.props.dogs} />
           <Switch>
             <Route path="/dogs/:name" 
-                   render={ rtProps => <Dog dogs={this.props.dogs}{...rtProps } />} />
+                   render={rtProps => <Dog dogs={this.props.dogs} {...rtProps} />} />
             <Route exact path="/dogs"
-                   render={ () => <DogList dogs={this.props.dogs} />} />
+                   render={() => <DogList dogs={this.props.dogs} />} />
             <Redirect to="/dogs" />
           </Switch>
         </BrowserRouter>

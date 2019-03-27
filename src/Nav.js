@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import uuid from 'uuid/v4';
 
 class Nav extends Component {
     
     render() {
-        
-        const someDog = this.props.dogs.map( dg => { 
-            return <NavLink key={dg.name}
+        // Duynamically create links to all dogs in props.
+        const someDog = this.props.dogs.map(dg => { 
+            return <NavLink key={uuid()}
                             exact to={`/dogs/${dg.name}`}>
                     {dg.name}        
                     </NavLink>
         });
         return (
             <nav className="dog-nav">
-                <p><NavLink exact to="/dogs">HOME</NavLink></p>
+                <NavLink exact to="/dogs">Home</NavLink>
                {someDog}
             </nav>                
           
